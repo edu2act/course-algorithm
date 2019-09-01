@@ -1,0 +1,70 @@
+{
+    "title": "算法分析与设计",
+    "author": "Eetze",
+    "description": "算法分析与设计",
+    "language": "zh-hans",
+    "gitbook" : ">=3.0.0",
+    "styles": {
+        "website": "/styles/website.css"
+    },
+    "structure": {
+        "readme": "README.md"
+    },
+    "styles": {
+        "website": "styles/website.css"
+    },
+    "plugins": [
+        "favicon",
+        "-sharing",
+        "folding-chapters",
+        "-highlight", "prism", "prism-themes",
+        "splitter",
+        "-lunr", "-search", "search-plus",
+        "github",
+        "anchor-navigation-ex",
+        "fancybox",
+        "insert-logo-link-style",
+        "mathjax",
+        "tbfed-pagefooter@^0.0.1"
+    ],
+    "pluginsConfig": {
+        "theme-default": {
+            "showLevel": false
+        },
+        "folding-chapters":{},
+        "prism": {
+            "css": [
+                "prism-themes/themes/prism-ghcolors.css"
+            ],
+            "lang": {
+                "Java": "java",
+                "XML": "xml"
+            }
+        },
+        "github": {
+            "url": "https://github.com/edu2act/course-algorithm"
+        },
+        "anchor-navigation-ex": {
+           "associatedWithSummary":false,
+           "showLevel":false,
+           "multipleH1":false
+        },
+        "insert-logo-link-style": {
+            "src": "images/logo.png",
+            "style": "background: none; width: 220px;",
+            "link": "http://github.com/edu2act"
+        },
+        "favicon": {
+            "shortcut": "images/favicon.ico",
+            "bookmark": "images/favicon.ico",
+            "appleTouch": "images/apple-touch-icon.png",
+            "appleTouchMore": {
+                "120x120": "images/apple-touch-icon-120x120.png",
+                "180x180": "images/apple-touch-icon-180x180.png"
+            }
+        },
+        "tbfed-pagefooter": {
+            "copyright": "Copyright © eetze 2019"
+        }
+    }
+}
