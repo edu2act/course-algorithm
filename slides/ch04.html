@@ -78,6 +78,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="ch05.html" />
+    
     
     <link rel="prev" href="ch03.html" />
     
@@ -183,6 +185,19 @@
             
                     
                     第四章：递归
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="ch05.html">
+            
+                <a href="ch05.html">
+            
+                    
+                    第五章：贪心
             
                 </a>
             
@@ -357,7 +372,7 @@
 <p>&#x672C;&#x9898;&#x4E2D;&#x201C;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#x201D;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
 <ol>
 <li>&#x4E00;&#x4E2A;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x503C;&#x4E3A;&#x8BE5;&#x6570;</li>
-<li>&quot;&#x8FD0;&#x7B97;&#x7B26;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&quot; &#x662F;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x503C;&#x4E3A;&#x4E24;&#x4E2A;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x8FD0;&#x7B97;&#x7684;&#x7ED3;&#x679C;</li>
+<li>&quot;&#x8FD0;&#x7B97;&#x7B26;  &#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;  &#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&quot; &#x662F;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x503C;&#x4E3A;&#x4E24;&#x4E2A;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x8FD0;&#x7B97;&#x7684;&#x7ED3;&#x679C;</li>
 </ol>
 <p>&#x4E00;&#x822C;&#x6559;&#x79D1;&#x4E66;&#x5C06;&#x672C;&#x9898;&#x4E2D;&#x7684;&#x201C;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#x201D;&#x79F0;&#x4E3A;&#x201C;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#x201D;&#xFF0C;&#x800C;&#x5C06;&#x8FD0;&#x7B97;&#x7B26;&#x540E;&#x7F6E;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x6210;&#x4E3A;&#x201C;&#x9006;&#x6CE2;&#x5170;&#x8868;&#x8FBE;&#x5F0F;&#x201D;</p>
 <p><strong>[&#x53C2;&#x8003;&#x4EE3;&#x7801;]</strong></p>
@@ -476,7 +491,7 @@
 <p>&#x5F53;&#x957F;&#x5EA6;&#x4E3A; <script type="math/tex; ">n</script>&#xFF0C;&#x672B;&#x5C3E;&#x4E3A; O &#x65F6;&#xFF0C;&#x518D;&#x52A0;&#x4E00;&#x4E2A;&#x5355;&#x4F4D;&#x7684;&#x957F;&#x5EA6;&#x6709;&#x4E24;&#x79CD;&#x52A0;&#x6CD5;&#xFF0C;&#x5373; E&#xFF0C;F&#x3002;</p>
 <p>&#x5F53;&#x957F;&#x5EA6;&#x4E3A; <script type="math/tex; ">n</script>&#xFF0C;&#x672B;&#x5C3E;&#x4E0D;&#x4E3A; O &#x65F6;&#xFF0C;&#x518D;&#x52A0;&#x4E00;&#x4E2A;&#x5355;&#x4F4D;&#x7684;&#x957F;&#x5EA6;&#x6709;&#x4E09;&#x79CD;&#x52A0;&#x6CD5;&#xFF0C;&#x5373; E&#xFF0C;O&#xFF0C;F&#x3002;</p>
 <p>&#x6240;&#x4EE5; <script type="math/tex; ">x[n+1] = a[n+1] + b[n+1] = 2*a[n] + 3*b[n] = 2*x[n] + b[n]</script> &#x3002;</p>
-<p>&#x800C; <script type="math/tex; ">b[n]</script> &#x53C8;&#x7531; <script type="math/tex; ">x[n+1]</script> &#x63A8;&#x6765;&#xFF0C;<script type="math/tex; ">x[n-1] = a[n-1] + b[n-1]</script>&#xFF0C;&#x5728;&#x957F;&#x5EA6;&#x4E3A; <script type="math/tex; ">n-1</script> &#x4E14;&#x672B;&#x5C3E;&#x4E3A; O &#x65F6;&#xFF0C;&#x8981;&#x5C06;&#x5B83;&#x53D8;&#x6210;&#x957F;&#x5EA6;&#x4E3A; <script type="math/tex; ">n</script> &#x4E14;&#x672B;&#x5C3E;&#x4E0D;&#x4E3A; O &#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF08;E&#xFF0C;F&#xFF09;&#xFF0C;&#x5373; <script type="math/tex; ">2*a[n-1]</script>&#x3002;</p>
+<p>&#x800C; <script type="math/tex; ">b[n]</script> &#x53C8;&#x7531; <script type="math/tex; ">x[n-1]</script> &#x63A8;&#x6765;&#xFF0C;<script type="math/tex; ">x[n-1] = a[n-1] + b[n-1]</script>&#xFF0C;&#x5728;&#x957F;&#x5EA6;&#x4E3A; <script type="math/tex; ">n-1</script> &#x4E14;&#x672B;&#x5C3E;&#x4E3A; O &#x65F6;&#xFF0C;&#x8981;&#x5C06;&#x5B83;&#x53D8;&#x6210;&#x957F;&#x5EA6;&#x4E3A; <script type="math/tex; ">n</script> &#x4E14;&#x672B;&#x5C3E;&#x4E0D;&#x4E3A; O &#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF08;E&#xFF0C;F&#xFF09;&#xFF0C;&#x5373; <script type="math/tex; ">2*a[n-1]​</script>&#x3002;</p>
 <p>&#x540C;&#x7406;&#xFF0C;&#x5728;&#x957F;&#x5EA6;&#x4E3A; <script type="math/tex; ">n-1</script> &#x4E14;&#x672B;&#x5C3E;&#x4E0D;&#x4E3A; O &#x65F6;&#xFF0C;&#x8981;&#x5C06;&#x5B83;&#x53D8;&#x6210;&#x957F;&#x5EA6;&#x4E3A; <script type="math/tex; ">n</script> &#x4E14;&#x672B;&#x5C3E;&#x4E0D;&#x4E3A; O &#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF08;E&#xFF0C;F&#xFF09;&#xFF0C;&#x5373; <script type="math/tex; ">2*b[n-1]</script>&#x3002;</p>
 <p>&#x6240;&#x4EE5; <script type="math/tex; ">x[n+1] = 2*x[n] + b[n] = 2*x[n] + 2*x[n-1]</script>&#x3002;</p>
 <p><strong>[&#x53C2;&#x8003;&#x4EE3;&#x7801;]</strong></p>
@@ -789,7 +804,7 @@ NO
 <span class="token punctuation">}</span>
 </code></pre>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; eetze 2019 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">File Modify: 
-2019-09-25 16:37:13
+2019-09-30 09:02:43
 </span></footer>
                                 
                                 </section>
@@ -817,10 +832,14 @@ NO
 
             
                 
-                <a href="ch03.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第三章：枚举">
+                <a href="ch03.html" class="navigation navigation-prev " aria-label="Previous page: 第三章：枚举">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="ch05.html" class="navigation navigation-next " aria-label="Next page: 第五章：贪心">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -829,7 +848,7 @@ NO
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第四章：递归","level":"5","depth":0,"previous":{"title":"第三章：枚举","level":"4","depth":0,"path":"slides/ch03.md","ref":"slides/ch03.md","articles":[]},"dir":"ltr"},"config":{"plugins":["favicon","-sharing","folding-chapters","-highlight","prism","prism-themes","splitter","-lunr","-search","search-plus","github","anchor-navigation-ex","fancybox","insert-logo-link-style","mathjax","tbfed-pagefooter@^0.0.1"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © eetze 2019"},"prism":{"css":["prism-themes/themes/prism-ghcolors.css"],"lang":{"Java":"java","XML":"xml"}},"fancybox":{"helpers":{"buttons":{}}},"github":{"url":"https://github.com/edu2act/course-algorithm"},"splitter":{},"insert-logo-link-style":{"src":"images/logo.png","style":"background: none; width: 220px;","link":"http://github.com/edu2act","target":""},"fontsettings":{"theme":"white","family":"sans","size":2},"folding-chapters":{},"anchor-navigation-ex":{"associatedWithSummary":false,"showLevel":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/apple-touch-icon.png","appleTouchMore":{"120x120":"images/apple-touch-icon-120x120.png","180x180":"images/apple-touch-icon-180x180.png"}},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"theme-default":{"showLevel":false,"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"search-plus":{}},"theme":"default","author":"Eetze","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"算法分析与设计","language":"zh-hans","gitbook":">=3.0.0","description":"算法分析与设计"},"file":{"path":"slides/ch04.md","mtime":"2019-09-25T08:37:13.694Z","type":"markdown"},"gitbook":{"version":"3.0.0","time":"2019-09-25T08:37:21.667Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第四章：递归","level":"5","depth":0,"next":{"title":"第五章：贪心","level":"6","depth":0,"path":"slides/ch05.md","ref":"slides/ch05.md","articles":[]},"previous":{"title":"第三章：枚举","level":"4","depth":0,"path":"slides/ch03.md","ref":"slides/ch03.md","articles":[]},"dir":"ltr"},"config":{"plugins":["favicon","-sharing","folding-chapters","-highlight","prism","prism-themes","splitter","-lunr","-search","search-plus","github","anchor-navigation-ex","fancybox","insert-logo-link-style","mathjax","tbfed-pagefooter@^0.0.1"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © eetze 2019"},"prism":{"css":["prism-themes/themes/prism-ghcolors.css"],"lang":{"Java":"java","XML":"xml"}},"fancybox":{"helpers":{"buttons":{}}},"github":{"url":"https://github.com/edu2act/course-algorithm"},"splitter":{},"insert-logo-link-style":{"src":"images/logo.png","style":"background: none; width: 220px;","link":"http://github.com/edu2act","target":""},"fontsettings":{"theme":"white","family":"sans","size":2},"folding-chapters":{},"anchor-navigation-ex":{"associatedWithSummary":false,"showLevel":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/apple-touch-icon.png","appleTouchMore":{"120x120":"images/apple-touch-icon-120x120.png","180x180":"images/apple-touch-icon-180x180.png"}},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"theme-default":{"showLevel":false,"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"search-plus":{}},"theme":"default","author":"Eetze","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"算法分析与设计","language":"zh-hans","gitbook":">=3.0.0","description":"算法分析与设计"},"file":{"path":"slides/ch04.md","mtime":"2019-09-30T01:02:43.947Z","type":"markdown"},"gitbook":{"version":"3.0.0","time":"2019-09-30T01:03:33.342Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
