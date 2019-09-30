@@ -10,3 +10,4 @@
 |第二章 |排序 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch02.html) |
 |第三章 |枚举 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch03.html) |
 |第四章 |递归 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch04.html) |
+|第五章 |贪心 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch05.html) |
