@@ -25,7 +25,10 @@
         "fancybox",
         "insert-logo-link-style",
         "mathjax",
-        "tbfed-pagefooter@^0.0.1"
+        "tbfed-pagefooter@^0.0.1",
+        "code",
+        "click-reveal",
+        "accordion"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -65,6 +68,9 @@
         },
         "tbfed-pagefooter": {
             "copyright": "Copyright © eetze 2019"
+        },
+        "code": {
+            "copyButtons": true
         }
     }
 }
