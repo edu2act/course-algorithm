@@ -1,0 +1,653 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <title>第六章：深度优先搜索 · 算法分析与设计</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.0.0">
+        <meta name="author" content="Eetze">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-folding-chapters/folding-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-ghcolors.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fancybox/jquery.fancybox.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fancybox/jquery.fancybox-buttons.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo-link-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-click-reveal/click_reveal.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-accordion/accordion.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="ch05.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../images/apple-touch-icon.png'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../images/apple-touch-icon-120x120.png">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-180x180.png">
+        
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="ch01.html">
+            
+                <a href="ch01.html">
+            
+                    
+                    第一章：概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="ch02.html">
+            
+                <a href="ch02.html">
+            
+                    
+                    第二章：排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="ch03.html">
+            
+                <a href="ch03.html">
+            
+                    
+                    第三章：枚举
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="ch04.html">
+            
+                <a href="ch04.html">
+            
+                    
+                    第四章：递归
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="ch05.html">
+            
+                <a href="ch05.html">
+            
+                    
+                    第五章：贪心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="7" data-path="ch06.html">
+            
+                <a href="ch06.html">
+            
+                    
+                    第六章：深度优先搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第六章：深度优先搜索</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x7B2C;6&#x7AE0;-&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;"><b></b>&#x7B2C;6&#x7AE0; &#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;</a></li><ul><li><span class="title-icon "></span><a href="#61-&#x57CE;&#x5821;&#x95EE;&#x9898;"><b></b>6.1 &#x57CE;&#x5821;&#x95EE;&#x9898;</a></li><li><span class="title-icon "></span><a href="#62-&#x8E29;&#x65B9;&#x683C;"><b></b>6.2 &#x8E29;&#x65B9;&#x683C;</a></li></ul></ul></div><a href="#&#x7B2C;6&#x7AE0;-&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x7B2C;6&#x7AE0;-&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;"><a name="&#x7B2C;6&#x7AE0;-&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;" class="anchor-navigation-ex-anchor" href="#&#x7B2C;6&#x7AE0;-&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B2C;6&#x7AE0; &#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;</h1>
+<ul>
+<li><strong>&#x5728;&#x56FE;&#x4E0A;&#x5BFB;&#x627E;&#x8DEF;&#x5F84;</strong></li>
+</ul>
+<div style="width:450px; margin:0 auto;">     <a href="images/6-p1.png" rel="grouped" title="" target="_self" class="fancybox">
+       <img src="images/6-p1.png" alt="">
+     </a></div>
+
+<p>&#x5728;&#x56FE;&#x4E0A;&#x5982;&#x4F55;&#x5BFB;&#x627E;&#x4ECE;1&#x5230;8&#x7684;&#x8DEF;&#x5F84;&#xFF1F;</p>
+<p>&#x4E00;&#x79CD;&#x7B56;&#x7565;&#xFF1A;&#x53EA;&#x8981;&#x80FD;&#x53D1;&#x73B0;&#x6CA1;&#x8D70;&#x8FC7;&#x7684;&#x70B9;&#xFF0C;&#x5C31;&#x8D70;&#x5230;&#x5B83;&#x3002;&#x6709;&#x591A;&#x4E2A;&#x70B9;&#x53EF;&#x8D70;&#x5C31;&#x968F;&#x4FBF;&#x6311;&#x4E00;&#x4E2A;&#xFF0C;&#x5982;&#x679C;&#x65E0;&#x8DEF;&#x53EF;&#x8D70;&#x5C31;&#x56DE;&#x9000;&#xFF0C;&#x518D;&#x770B;&#x6709;&#x6CA1;&#x6709;&#x6CA1;&#x8D70;&#x8FC7;&#x7684;&#x70B9;&#x53EF;&#x8D70;&#x3002;</p>
+<ul>
+<li>&#x8FD0;&#x6C14;&#x597D;&#xFF1A;[1] -&gt; [2] -&gt; [4] -&gt; [8]</li>
+<li>&#x8FD0;&#x6C14;&#x4E00;&#x822C;&#xFF1A;[1] -&gt; [2] -&gt; [4] -&gt; [5] -&gt; [6] -&gt; [8]</li>
+<li>&#x8FD0;&#x6C14;&#x574F;&#xFF1A;[1] -&gt; [3] -&gt; [7] -&gt; [9] =&gt; [7]  =&gt; [3] -&gt; [5] -&gt; [6] -&gt; [8]&#xFF08;&#x53CC;&#x7EBF;&#x7BAD;&#x5934;&#x8868;&#x793A;&#x56DE;&#x9000;&#xFF09;</li>
+</ul>
+<div style="width:450px; margin:0 auto;">     <a href="images/6-p2.png" rel="grouped" title="" target="_self" class="fancybox">
+       <img src="images/6-p2.png" alt="">
+     </a></div>
+
+<p>&#x4E0D;&#x8FDE;&#x901A;&#x7684;&#x56FE;&#xFF0C;&#x65E0;&#x6CD5;&#x4ECE;&#x8282;&#x70B9;1&#x8D70;&#x5230;&#x8282;&#x70B9;8&#x3002;</p>
+<p>&#x5B8C;&#x6574;&#x7684;&#x5C1D;&#x8BD5;&#x8FC7;&#x7A0B;&#x53EF;&#x80FD;&#x4E3A;&#xFF1A;[1] -&gt; [2] -&gt; [4] -&gt; [3] -&gt; [7] =&gt; [3] =&gt; [4] =&gt; [2] -&gt; [9] =&gt; [2] =&gt; [1]</p>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;&#x4E0D;&#x5B58;&#x5728;&#x4ECE;1&#x5230;8&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x5F97;&#x51FA;&#x8FD9;&#x4E2A;&#x7ED3;&#x8BBA;&#x4E4B;&#x524D;&#xFF0C;&#x4E00;&#x5B9A;&#x4F1A;&#x628A;&#x4ECE;1&#x51FA;&#x53D1;&#x80FD;&#x8D70;&#x5230;&#x7684;&#x70B9;&#x5168;&#x90E8;&#x90FD;&#x8D70;&#x8FC7;&#x3002;</p>
+<p>&#x4ECE;&#x8D77;&#x70B9;&#x51FA;&#x53D1;&#xFF0C;&#x8D70;&#x8FC7;&#x7684;&#x70B9;&#x8981;&#x505A;&#x6807;&#x8BB0;&#xFF0C;&#x53D1;&#x73B0;&#x6709;&#x6CA1;&#x8D70;&#x8FC7;&#x7684;&#x70B9;&#xFF0C;&#x5C31;&#x968F;&#x610F;&#x6311;&#x4E00;&#x4E2A;&#x5F80;&#x524D;&#x8D70;&#xFF0C;&#x8D70;&#x4E0D;&#x4E86;&#x5C31;&#x56DE;&#x9000;&#xFF0C;&#x6B64;&#x79CD;&#x8DEF;&#x5F84;&#x641C;&#x7D22;&#x7B56;&#x7565;&#x5C31;&#x79F0;&#x4E3A;&#x201C;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;&#x201D;&#xFF0C;&#x7B80;&#x79F0;&#x201C;&#x6DF1;&#x641C;&#x201D;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#x79F0;&#x4E3A;&#x201C;&#x8FDC;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;&#x201D;&#x66F4;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x4E9B;&#x3002;&#x56E0;&#x4E3A;&#x8FD9;&#x79CD;&#x7B56;&#x7565;&#x80FD;&#x5F80;&#x524D;&#x8D70;&#x4E00;&#x6B65;&#x5C31;&#x5F80;&#x524D;&#x8D70;&#x4E00;&#x6B65;&#xFF0C;&#x603B;&#x662F;&#x8BD5;&#x56FE;&#x8D70;&#x5F97;&#x66F4;&#x8FDC;&#x3002;&#x6240;&#x8C13;&#x8FDC;&#x8FD1;(&#x6216;&#x6DF1;&#x5EA6;&#xFF09;&#xFF0C;&#x5C31;&#x662F;&#x4EE5;&#x8DDD;&#x79BB;&#x8D77;&#x70B9;&#x7684;&#x6B65;&#x6570;&#x6765;&#x8861;&#x91CF;&#x7684;&#x3002;</p>
+<ul>
+<li><strong>&#x5224;&#x65AD;&#x4ECE;V&#x51FA;&#x53D1;&#x662F;&#x5426;&#x80FD;&#x8D70;&#x5230;&#x7EC8;&#x70B9;</strong></li>
+</ul>
+<pre class="language-"><code class="lang-cpp"><span class="token keyword">bool</span> <span class="token function">Dfs</span><span class="token punctuation">(</span>V<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>V&#x4E3A;&#x7EC8;&#x70B9;<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+    &#x5C06;V&#x6807;&#x8BB0;&#x4E3A;&#x65E7;&#x70B9;<span class="token punctuation">;</span>
+    &#x5BF9;&#x548C;V&#x76F8;&#x90BB;&#x7684;&#x6BCF;&#x4E2A;&#x65B0;&#x8282;&#x70B9;U <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">Dfs</span><span class="token punctuation">(</span>U<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    &#x5C06;&#x6240;&#x6709;&#x70B9;&#x90FD;&#x6807;&#x8BB0;&#x4E3A;&#x65B0;&#x70B9;<span class="token punctuation">;</span>
+    &#x8D77;&#x70B9; <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    &#x7EC8;&#x70B9; <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%s\n&quot;</span><span class="token punctuation">,</span> <span class="token function">Dfs</span><span class="token punctuation">(</span>&#x8D77;&#x70B9;<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">&quot;Yes&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;No&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><strong>&#x5224;&#x65AD;&#x4ECE;V&#x51FA;&#x53D1;&#x662F;&#x5426;&#x80FD;&#x8D70;&#x5230;&#x7EC8;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x80FD;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;</strong></li>
+</ul>
+<pre class="language-"><code class="lang-cpp">Node path<span class="token punctuation">[</span>MAX_LEN<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// MAX_LEN&#x53D6;&#x8282;&#x70B9;&#x603B;&#x6570;&#x5373;&#x53EF;</span>
+<span class="token keyword">int</span> depth<span class="token punctuation">;</span>
+
+<span class="token keyword">bool</span> <span class="token function">Dfs</span><span class="token punctuation">(</span>V<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>V&#x4E3A;&#x7EC8;&#x70B9;<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        path<span class="token punctuation">[</span>depth<span class="token punctuation">]</span> <span class="token operator">=</span> V<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    &#x5C06;V&#x6807;&#x8BB0;&#x4E3A;&#x65E7;&#x70B9;<span class="token punctuation">;</span>
+    path<span class="token punctuation">[</span>depth<span class="token punctuation">]</span> <span class="token operator">=</span> V<span class="token punctuation">;</span>
+    <span class="token operator">++</span>depth<span class="token punctuation">;</span>
+    &#x5BF9;&#x548C;V&#x76F8;&#x90BB;&#x7684;&#x6BCF;&#x4E2A;&#x65B0;&#x8282;&#x70B9;U <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">Dfs</span><span class="token punctuation">(</span>U<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">--</span>depth<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    &#x5C06;&#x6240;&#x6709;&#x70B9;&#x90FD;&#x6807;&#x8BB0;&#x4E3A;&#x65B0;&#x70B9;<span class="token punctuation">;</span>
+    depth <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">Dfs</span><span class="token punctuation">(</span>&#x8D77;&#x70B9;<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i <span class="token operator">&lt;=</span> depth<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d\n&quot;</span><span class="token punctuation">,</span> path<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><strong>&#x904D;&#x5386;&#x56FE;&#x4E0A;&#x6240;&#x6709;&#x8282;&#x70B9;</strong></li>
+</ul>
+<pre class="language-"><code class="lang-cpp"><span class="token function">Dfs</span><span class="token punctuation">(</span>V<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    &#x5C06;V&#x6807;&#x8BB0;&#x4E3A;&#x65E7;&#x70B9;<span class="token punctuation">;</span>
+    &#x5BF9;&#x548C;V&#x76F8;&#x90BB;&#x7684;&#x6BCF;&#x4E2A;&#x65B0;&#x70B9;U <span class="token punctuation">{</span>
+        <span class="token function">Dfs</span><span class="token punctuation">(</span>U<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    &#x5C06;&#x6240;&#x6709;&#x70B9;&#x90FD;&#x6807;&#x8BB0;&#x4E3A;&#x65B0;&#x70B9;<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>&#x5728;&#x56FE;&#x4E2D;&#x80FD;&#x627E;&#x5230;&#x65B0;&#x70B9;k<span class="token punctuation">)</span>
+        <span class="token function">Dfs</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><strong>&#x56FE;&#x7684;&#x8868;&#x793A;&#x65B9;&#x6CD5; -- &#x90BB;&#x63A5;&#x77E9;&#x9635;</strong></li>
+</ul>
+<p>&#x7528;&#x4E00;&#x4E2A;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;<script type="math/tex; ">G</script>&#x5B58;&#x653E;&#x56FE;&#xFF0C;<script type="math/tex; ">G[i][j]</script>&#x8868;&#x793A;&#x8282;&#x70B9;<script type="math/tex; ">i</script>&#x548C;&#x8282;&#x70B9;<script type="math/tex; ">j</script>&#x4E4B;&#x95F4;&#x8FB9;&#x7684;&#x60C5;&#x51B5;&#xFF08;&#x5982;&#x6709;&#x65E0;&#x8FB9;&#xFF0C;&#x8FB9;&#x65B9;&#x5411;&#xFF0C;&#x6743;&#x503C;&#x5927;&#x5C0F;&#x7B49;) &#x3002;</p>
+<p>&#x904D;&#x5386;&#x590D;&#x6742;&#x5EA6;&#xFF1A;<script type="math/tex; ">O(n^2)</script>&#x3002; &#xFF08;<script type="math/tex; ">n</script>&#x4E3A;&#x8282;&#x70B9;&#x6570;&#x76EE;&#xFF09;</p>
+<ul>
+<li><strong>&#x56FE;&#x7684;&#x8868;&#x793A;&#x65B9;&#x6CD5; -- &#x90BB;&#x63A5;&#x8868;</strong></li>
+</ul>
+<p>&#x6BCF;&#x4E2A;&#x8282;&#x70B9;<script type="math/tex; ">V</script>&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x4E00;&#x7EF4;&#x6570;&#x7EC4;&#xFF08;vector&#xFF09;&#xFF0C;&#x91CC;&#x9762;&#x5B58;&#x653E;&#x4ECE;<script type="math/tex; ">V</script>&#x8FDE;&#x51FA;&#x53BB;&#x7684;&#x8FB9;&#xFF0C;&#x8FB9;&#x7684;&#x4FE1;&#x606F;&#x5305;&#x62EC;&#x53E6;&#x4E00;&#x9876;&#x70B9;&#xFF0C;&#x8FD8;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x8FB9;&#x6743;&#x503C;&#x7B49;&#x3002;</p>
+<p>&#x904D;&#x5386;&#x590D;&#x6742;&#x5EA6;&#xFF1A;<script type="math/tex; ">O(n+e)</script>&#x3002; &#xFF08;<script type="math/tex; ">n</script>&#x4E3A;&#x8282;&#x70B9;&#x6570;&#x76EE;&#xFF0C;<script type="math/tex; ">e</script>&#x4E3A;&#x8FB9;&#x6570;&#x76EE;&#xFF09;</p>
+<div style="width:450px; margin:0 auto;">     <a href="images/6-p3.png" rel="grouped" title="" target="_self" class="fancybox">
+       <img src="images/6-p3.png" alt="">
+     </a></div>
+
+
+<h2 id="61-&#x57CE;&#x5821;&#x95EE;&#x9898;"><a name="61-&#x57CE;&#x5821;&#x95EE;&#x9898;" class="anchor-navigation-ex-anchor" href="#61-&#x57CE;&#x5821;&#x95EE;&#x9898;"><i class="fa fa-link" aria-hidden="true"></i></a>6.1 &#x57CE;&#x5821;&#x95EE;&#x9898;</h2>
+<p><strong>[&#x9898;&#x9762;]</strong></p>
+<pre class="language-"><code>     1   2   3   4   5   6   7  
+   #############################
+ 1 #   |   #   |   #   |   |   #
+   #####---#####---#---#####---#
+ 2 #   #   |   #   #   #   #   #
+   #---#####---#####---#####---#
+ 3 #   |   |   #   #   #   #   #
+   #---#########---#####---#---#
+ 4 #   #   |   |   |   |   #   #
+   #############################
+
+   #  = Wall   
+   |  = No wall
+   -  = No wall
+</code></pre><p>&#x4E0A;&#x56FE;&#x662F;&#x4E00;&#x4E2A;&#x57CE;&#x5821;&#x7684;&#x5730;&#x5F62;&#x56FE;&#x3002;&#x8BF7;&#x4F60;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x8BA1;&#x7B97;&#x57CE;&#x5821;&#x4E00;&#x5171;&#x6709;&#x591A;&#x5C11;&#x623F;&#x95F4;&#xFF0C;&#x6700;&#x5927;&#x7684;&#x623F;&#x95F4;&#x6709;&#x591A;&#x5927;&#x3002;&#x57CE;&#x5821;&#x88AB;&#x5206;&#x5272;&#x6210; <script type="math/tex; ">m \times n</script>&#xFF08;<script type="math/tex; ">m \leq 50</script>&#xFF0C;<script type="math/tex; ">n \leq 50</script>&#xFF09;&#x4E2A;&#x65B9;&#x5757;&#xFF0C;&#x6BCF;&#x4E2A;&#x65B9;&#x5757;&#x53EF;&#x4EE5;&#x6709;0~4&#x9762;&#x5899;&#x3002;</p>
+<p><strong>[&#x8F93;&#x5165;]</strong></p>
+<p>&#x7A0B;&#x5E8F;&#x4ECE;&#x6807;&#x51C6;&#x8F93;&#x5165;&#x8BBE;&#x5907;&#x8BFB;&#x5165;&#x6570;&#x636E;&#x3002;&#x7B2C;&#x4E00;&#x884C;&#x662F;&#x4E24;&#x4E2A;&#x6574;&#x6570;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x5357;&#x5317;&#x5411;&#x3001;&#x4E1C;&#x897F;&#x5411;&#x7684;&#x65B9;&#x5757;&#x6570;&#x3002;&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x8F93;&#x5165;&#x884C;&#x91CC;&#xFF0C;&#x6BCF;&#x4E2A;&#x65B9;&#x5757;&#x7528;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#xFF08;<script type="math/tex; ">0 \leq p \leq 50</script>&#xFF09;&#x63CF;&#x8FF0;&#x3002;&#x7528;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x8868;&#x793A;&#x65B9;&#x5757;&#x5468;&#x56F4;&#x7684;&#x5899;&#xFF0C;1&#x8868;&#x793A;&#x897F;&#x5899;&#xFF0C;2&#x8868;&#x793A;&#x5317;&#x5899;&#xFF0C;4&#x8868;&#x793A;&#x4E1C;&#x5899;&#xFF0C;8&#x8868;&#x793A;&#x5357;&#x5899;&#x3002;&#x6BCF;&#x4E2A;&#x65B9;&#x5757;&#x7528;&#x4EE3;&#x8868;&#x5176;&#x5468;&#x56F4;&#x5899;&#x7684;&#x6570;&#x5B57;&#x4E4B;&#x548C;&#x8868;&#x793A;&#x3002;&#x57CE;&#x5821;&#x7684;&#x5185;&#x5899;&#x88AB;&#x8BA1;&#x7B97;&#x4E24;&#x6B21;&#xFF0C;&#x65B9;&#x5757;&#xFF08;1,1&#xFF09;&#x7684;&#x5357;&#x5899;&#x540C;&#x65F6;&#x4E5F;&#x662F;&#x65B9;&#x5757;&#xFF08;2,1&#xFF09;&#x7684;&#x5317;&#x5899;&#x3002;&#x8F93;&#x5165;&#x7684;&#x6570;&#x636E;&#x4FDD;&#x8BC1;&#x57CE;&#x5821;&#x81F3;&#x5C11;&#x6709;&#x4E24;&#x4E2A;&#x623F;&#x95F4;&#xFF0C;&#x6570;&#x636E;&#x4FDD;&#x8BC1;&#x57CE;&#x5821;&#x56DB;&#x5468;&#x90FD;&#x662F;&#x5899;&#x3002;</p>
+<p><strong>[&#x8F93;&#x51FA;]</strong></p>
+<p>&#x57CE;&#x5821;&#x7684;&#x623F;&#x95F4;&#x6570;&#x3001;&#x57CE;&#x5821;&#x4E2D;&#x6700;&#x5927;&#x623F;&#x95F4;&#x6240;&#x5305;&#x62EC;&#x7684;&#x65B9;&#x5757;&#x6570;&#x3002;&#x7ED3;&#x679C;&#x663E;&#x793A;&#x5728;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x8BBE;&#x5907;&#x4E0A;&#x3002;</p>
+<p><strong>[&#x6837;&#x4F8B;&#x8F93;&#x5165;]</strong></p>
+<pre class="language-"><code>4 
+7 
+11 6 11 6 3 10 6 
+7 9 6 13 5 15 5 
+1 10 12 7 13 7 5 
+13 11 10 8 10 12 13
+</code></pre><p><strong>[&#x6837;&#x4F8B;&#x8F93;&#x51FA;]</strong></p>
+<pre class="language-"><code>5
+9
+</code></pre><p><strong>[&#x601D;&#x8DEF;]</strong></p>
+<p>&#x628A;&#x65B9;&#x5757;&#x770B;&#x4F5C;&#x662F;&#x8282;&#x70B9;&#xFF0C;&#x76F8;&#x90BB;&#x4E24;&#x4E2A;&#x65B9;&#x5757;&#x4E4B;&#x95F4;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5899;&#xFF0C;&#x5219;&#x5728;&#x65B9;&#x5757;&#x4E4B;&#x95F4;&#x8FDE;&#x4E00;&#x6761;&#x8FB9;&#xFF0C;&#x8FD9;&#x6837;&#x57CE;&#x5821;&#x5C31;&#x80FD;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x56FE;&#x3002;</p>
+<p>&#x6C42;&#x623F;&#x95F4;&#x4E2A;&#x6570;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5728;&#x6C42;&#x56FE;&#x4E2D;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x6781;&#x5927;&#x8FDE;&#x901A;&#x5B50;&#x56FE;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x8FDE;&#x901A;&#x5B50;&#x56FE;&#xFF0C;&#x5F80;&#x91CC;&#x5934;&#x52A0;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x56FE;&#x91CC;&#x7684;&#x5176;&#x4ED6;&#x70B9;&#xFF0C;&#x5C31;&#x4F1A;&#x53D8;&#x5F97;&#x4E0D;&#x8FDE;&#x901A;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x8FDE;&#x901A;&#x5B50;&#x56FE;&#x5C31;&#x662F;
+&#x6781;&#x5927;&#x8FDE;&#x901A;&#x5B50;&#x56FE;&#x3002;</p>
+<p>&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x623F;&#x95F4;&#xFF0C;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;&#xFF0C;&#x4ECE;&#x800C;&#x7ED9;&#x8FD9;&#x4E2A;&#x623F;&#x95F4;&#x80FD;&#x591F;&#x5230;&#x8FBE;&#x7684;&#x6240;&#x6709;&#x4F4D;&#x7F6E;&#x67D3;&#x8272;&#x3002;&#x6700;&#x540E;&#x7EDF;&#x8BA1;&#x4E00;&#x5171;&#x7528;&#x4E86;&#x51E0;&#x79CD;&#x989C;&#x8272;&#xFF0C;&#x4EE5;&#x53CA;&#x6BCF;&#x79CD;&#x989C;&#x8272;&#x7684;&#x6570;&#x91CF;&#x3002;</p>
+<p>&#x5982;&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x56FE;&#x5B8C;&#x8272;&#x53EF;&#x77E5;&#x4E00;&#x5171;&#x6709;5&#x4E2A;&#x623F;&#x95F4;&#xFF0C;&#x6700;&#x5927;&#x7684;&#x623F;&#x95F4;&#xFF08;1&#xFF09;&#x5360;&#x636E;9&#x4E2A;&#x683C;&#x5B50;&#x3002;</p>
+<pre class="language-"><code>#############################
+# 1 | 1 # 2 | 2 # 3 | 3 | 3 #
+#####---#####---#---#####---#
+# 1 # 1 | 1 # 2 # 3 # 4 # 3 #
+#---#####---#####---#####---#
+# 1 | 1 | 1 # 5 # 3 # 5 # 3 #
+#---#########---#####---#---#
+# 1 # 5 | 5 | 5 | 5 | 5 # 3 #
+#############################
+</code></pre><p><strong>[&#x53C2;&#x8003;&#x4EE3;&#x7801;]</strong></p>
+<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> R<span class="token punctuation">,</span>C<span class="token punctuation">;</span> <span class="token comment">// &#x884C;&#x5217;&#x6570;</span>
+<span class="token keyword">int</span> rooms<span class="token punctuation">[</span><span class="token number">60</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">60</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> color<span class="token punctuation">[</span><span class="token number">60</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">60</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> maxRoomArea <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> roomNum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> totalRoomArea<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>color<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+    <span class="token operator">++</span>totalRoomArea<span class="token punctuation">;</span>
+    color<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> roomNum<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>rooms<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">dfs</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x5411;&#x897F;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>rooms<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&amp;</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">dfs</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x5411;&#x5317;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>rooms<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&amp;</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">dfs</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x5411;&#x4E1C;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>rooms<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&amp;</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">dfs</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x5411;&#x5357;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>R<span class="token punctuation">,</span> <span class="token operator">&amp;</span>C<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span>R<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> j<span class="token operator">&lt;=</span>C<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>rooms<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span>R<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> j<span class="token operator">&lt;=</span>C<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>color<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token operator">++</span>roomNum <span class="token punctuation">;</span> 
+                totalRoomArea <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                <span class="token function">dfs</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                maxRoomArea <span class="token operator">=</span> totalRoomArea<span class="token operator">&gt;</span>maxRoomArea 
+                    <span class="token operator">?</span> totalRoomArea <span class="token operator">:</span> maxRoomArea<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d\n&quot;</span><span class="token punctuation">,</span> roomNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d\n&quot;</span><span class="token punctuation">,</span> maxRoomArea<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="62-&#x8E29;&#x65B9;&#x683C;"><a name="62-&#x8E29;&#x65B9;&#x683C;" class="anchor-navigation-ex-anchor" href="#62-&#x8E29;&#x65B9;&#x683C;"><i class="fa fa-link" aria-hidden="true"></i></a>6.2 &#x8E29;&#x65B9;&#x683C;</h2>
+<p><strong>[&#x9898;&#x9762;]</strong></p>
+<p>&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x683C;&#x77E9;&#x9635;&#xFF0C;&#x77E9;&#x9635;&#x8FB9;&#x754C;&#x5728;&#x65E0;&#x7A77;&#x8FDC;&#x5904;&#x3002;&#x6211;&#x4EEC;&#x505A;&#x5982;&#x4E0B;&#x5047;&#x8BBE;&#xFF1A;</p>
+<ul>
+<li>a. &#x6BCF;&#x8D70;&#x4E00;&#x6B65;&#x65F6;&#xFF0C;&#x53EA;&#x80FD;&#x4ECE;&#x5F53;&#x524D;&#x65B9;&#x683C;&#x79FB;&#x52A8;&#x4E00;&#x683C;&#xFF0C;&#x8D70;&#x5230;&#x67D0;&#x4E2A;&#x76F8;&#x90BB;&#x7684;&#x65B9;&#x683C;&#x4E0A;&#xFF1B;</li>
+<li>b. &#x8D70;&#x8FC7;&#x7684;&#x683C;&#x5B50;&#x7ACB;&#x5373;&#x584C;&#x9677;&#x65E0;&#x6CD5;&#x518D;&#x8D70;&#x7B2C;&#x4E8C;&#x6B21;&#xFF1B;</li>
+<li>c. &#x53EA;&#x80FD;&#x5411;&#x5317;&#x3001;&#x4E1C;&#x3001;&#x897F;&#x4E09;&#x4E2A;&#x65B9;&#x5411;&#x8D70;&#xFF1B;</li>
+</ul>
+<p>&#x8BF7;&#x95EE;&#xFF1A;&#x5982;&#x679C;&#x5141;&#x8BB8;&#x5728;&#x65B9;&#x683C;&#x77E9;&#x9635;&#x4E0A;&#x8D70; <script type="math/tex; ">n</script> &#x6B65;&#xFF0C;&#x5171;&#x6709;&#x591A;&#x5C11;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6848;&#x3002;2&#x79CD;&#x8D70;&#x6CD5;&#x53EA;&#x8981;&#x6709;&#x4E00;&#x6B65;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5373;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6848;&#x3002;</p>
+<p><strong>[&#x8F93;&#x5165;]</strong></p>
+<p>&#x5141;&#x8BB8;&#x5728;&#x65B9;&#x683C;&#x4E0A;&#x884C;&#x8D70;&#x7684;&#x6B65;&#x6570; <script type="math/tex; ">n</script>&#xFF08;<script type="math/tex; ">n \leq 20</script>&#xFF09;</p>
+<p><strong>[&#x8F93;&#x51FA;]</strong></p>
+<p>&#x8BA1;&#x7B97;&#x51FA;&#x7684;&#x65B9;&#x6848;&#x6570;&#x91CF;&#x3002;</p>
+<p><strong>[&#x6837;&#x4F8B;&#x8F93;&#x5165;]</strong></p>
+<pre class="language-"><code>2
+</code></pre><p><strong>[&#x6837;&#x4F8B;&#x8F93;&#x51FA;]</strong></p>
+<pre class="language-"><code>7
+</code></pre><p><strong>[&#x601D;&#x8DEF;]</strong></p>
+<p>&#x9012;&#x5F52;&#x4ECE;(i,j) &#x51FA;&#x53D1;&#xFF0C;&#x8D70;n&#x6B65;&#x7684;&#x65B9;&#x6848;&#x6570;&#xFF0C;&#x7B49;&#x4E8E;&#x4EE5;&#x4E0B;&#x4E09;&#x9879;&#x4E4B;&#x548C;&#xFF1A;</p>
+<ol>
+<li><p>&#x4ECE;(i+1,j)&#x51FA;&#x53D1;&#xFF0C;&#x8D70;n-1&#x6B65;&#x7684;&#x65B9;&#x6848;&#x6570;&#x3002;&#x524D;&#x63D0;&#xFF1A;(i+1,j)&#x8FD8;&#x6CA1;&#x8D70;&#x8FC7;</p>
+</li>
+<li><p>&#x4ECE;(i,j+1)&#x51FA;&#x53D1;&#xFF0C;&#x8D70;n-1&#x6B65;&#x7684;&#x65B9;&#x6848;&#x6570;&#x3002;&#x524D;&#x63D0;&#xFF1A;(i,j+1)&#x8FD8;&#x6CA1;&#x8D70;&#x8FC7;</p>
+</li>
+<li><p>&#x4ECE;(i,j-1)&#x51FA;&#x53D1;&#xFF0C;&#x8D70;n-1&#x6B65;&#x7684;&#x65B9;&#x6848;&#x6570;&#x3002;&#x524D;&#x63D0;&#xFF1A;(i,j-1)&#x8FD8;&#x6CA1;&#x8D70;&#x8FC7;</p>
+</li>
+</ol>
+<p><strong>[&#x53C2;&#x8003;&#x4EE3;&#x7801;]</strong></p>
+<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> visited<span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">ways</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span> n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        num <span class="token operator">+=</span> <span class="token function">ways</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        num <span class="token operator">+=</span> <span class="token function">ways</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        num <span class="token operator">+=</span> <span class="token function">ways</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> num<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d\n&quot;</span><span class="token punctuation">,</span> <span class="token function">ways</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">25</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; eetze 2019 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">File Modify: 
+2019-10-17 17:25:40
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch05.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第五章：贪心">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第六章：深度优先搜索","level":"7","depth":0,"previous":{"title":"第五章：贪心","level":"6","depth":0,"path":"slides/ch05.md","ref":"slides/ch05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["favicon","-sharing","folding-chapters","-highlight","prism","prism-themes","splitter","-lunr","-search","search-plus","github","anchor-navigation-ex","fancybox","insert-logo-link-style","mathjax","tbfed-pagefooter@^0.0.1","code","click-reveal","accordion"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © eetze 2019"},"prism":{"css":["prism-themes/themes/prism-ghcolors.css"],"lang":{"Java":"java","XML":"xml"}},"fancybox":{"helpers":{"buttons":{}}},"github":{"url":"https://github.com/edu2act/course-algorithm"},"splitter":{},"accordion":{},"insert-logo-link-style":{"src":"images/logo.png","style":"background: none; width: 220px;","link":"http://github.com/edu2act","target":""},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"folding-chapters":{},"click-reveal":{},"anchor-navigation-ex":{"associatedWithSummary":false,"showLevel":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/apple-touch-icon.png","appleTouchMore":{"120x120":"images/apple-touch-icon-120x120.png","180x180":"images/apple-touch-icon-180x180.png"}},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"theme-default":{"showLevel":false,"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"search-plus":{}},"theme":"default","author":"Eetze","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"算法分析与设计","language":"zh-hans","gitbook":">=3.0.0","description":"算法分析与设计"},"file":{"path":"slides/ch06.md","mtime":"2019-10-17T09:25:40.856Z","type":"markdown"},"gitbook":{"version":"3.0.0","time":"2019-10-17T09:25:47.675Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-folding-chapters/folding-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fancybox/jquery.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fancybox/jquery.mousewheel.pack.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fancybox/jquery.fancybox.pack.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fancybox/jquery.fancybox-buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fancybox/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo-link-style/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-click-reveal/click_reveal.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-accordion/accordionSelector.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
