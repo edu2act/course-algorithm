@@ -12,3 +12,4 @@
 |第四章 |递归 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch04.html) |
 |第五章 |贪心 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch05.html) |
 |第六章 |深搜 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch06.html) |
+|第七章 |广搜 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch07.html) |

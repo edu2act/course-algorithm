@@ -11,3 +11,4 @@
 |第四章|[递归](slides/ch04.md)|
 |第五章|[贪心](slides/ch05.md)|
 |第六章|[深度优先搜索](slides/ch06.md)|
+|第七章|[广度优先搜索](slides/ch07.md)|
