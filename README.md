@@ -13,3 +13,4 @@
 |第五章 |贪心 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch05.html) |
 |第六章 |深搜 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch06.html) |
 |第七章 |广搜 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch07.html) |
+|第八章 |动态规划 | [<img src="./image/presentation.png" height="15" />查看](https://edu2act.github.io/course-algorithm/slides/ch08.html) |
